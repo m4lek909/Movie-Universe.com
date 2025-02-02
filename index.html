@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Universe</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Star Effect */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background: black;
+            position: relative;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+        }
+
+        /* Movie & UI */
+        .container {
+            text-align: center;
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .episode-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .episode-button:hover {
+            background-color: #45a049;
+        }
+
+        #episodes-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .movies img {
+            width: 100%;  /* Ensures the image fills the width of its container */
+            max-width: 600px; /* Limits the width of the image */
+            height: auto;  /* Maintains aspect ratio */
+        }
+
+        #video-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 10px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 style="color: white;">Movie Universe</h1>
+            <p style="color: white;">The Best Movies Platform</p>
+        </header>
+
+        <div class="movies">
+            <div class="movie">
+                <img src="https://pbs.twimg.com/media/Gftc9HuWoAAax-2?format=jpg&name=large" alt="Movie Poster" class="movie-poster"  id="img1">
+            </div>
+        </div>
+
+        <button onclick="viewEpisodes()">View Episodes</button>
+
+        <div id="episodes-list" style="display: none;">
+            <button class="episode-button" onclick="playEpisode('1DLms_rhsOGDZvMb8qOz9zcqRQqYDuRTY')">Episode 1</button>
+            <button class="episode-button" onclick="playEpisode('1xqG0V5Q5t--7x_fatT64KaH-9n0hWZOZ')">Episode 2</button>
+            <button class="episode-button" onclick="playEpisode('1PGYllJc-hHF458Z8ISixQdtXgpzX1UEc')">Episode 3</button>
+            <button class="episode-button" onclick="playEpisode('11t8HUvPm9EbWi0k-x08aUx9ySiAiqzNX')">Episode 4</button>
+            <button class="episode-button" onclick="playEpisode('1BrD-E7cjVqiBkL4xA4F6w07h9DtyQw35')">Episode 5</button>
+            <button class="episode-button" onclick="playEpisode('1CbiBwreVXaupI9IBCooD9kER_Il60zgk')">Episode 6</button>
+            <button class="episode-button" onclick="playEpisode('13Tq5buY2dkYG3xjmLKGDzd-EqIWiQutb')">Episode 7</button>
+        </div>
+
+        <div id="video-container">
+            <iframe id="video-frame" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+    function viewEpisodes() {
+        var episodesList = document.getElementById("episodes-list");
+        episodesList.style.display = episodesList.style.display === "none" ? "flex" : "none";
+    }
+
+    function playEpisode(videoId) {
+        var embedLink = "https://drive.google.com/file/d/" + videoId + "/preview";
+        
+        // Open the video in a new tab
+        window.open(embedLink, '_blank');
+    }
+
+    // ⭐ Generate Falling Stars Effect
+    function createStars() {
+        const numStars = 100; // Number of stars
+        for (let i = 0; i < numStars; i++) {
+            let star = document.createElement("div");
+            star.classList.add("star");
+            document.body.appendChild(star);
+
+            let size = Math.random() * 3;
+            star.style.width = size + "px";
+            star.style.height = size + "px";
+            star.style.left = Math.random() * window.innerWidth + "px";
+            star.style.top = Math.random() * -window.innerHeight + "px";
+            star.style.animationDuration = (Math.random() * 5 + 3) + "s";
+        }
+    }
+
+    createStars();
+</script>
+
+</body>
+</html> 
