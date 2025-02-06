@@ -46,20 +46,22 @@
             z-index: 1;
         }
 
+        /* Episode Button */
         .episode-button {
             display: inline-block;
             margin: 10px;
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #4CAF50;
+            background: linear-gradient(145deg, #8e44ad, #4e0e76);
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
 
         .episode-button:hover {
-            background-color: #45a049;
+            background: linear-gradient(145deg, #4e0e76, #8e44ad);
         }
 
         #episodes-list {
@@ -70,9 +72,9 @@
         }
 
         .movies img {
-            width: 100%;  /* Ensures the image fills the width of its container */
-            max-width: 600px; /* Limits the width of the image */
-            height: auto;  /* Maintains aspect ratio */
+            width: 100%;
+            max-width: 600px;
+            height: auto;
         }
 
         #video-container {
@@ -87,6 +89,93 @@
             border-radius: 10px;
             border: none;
         }
+
+        /* Choufli Hal Poster */
+        .choufli-hal {
+            margin-top: 40px;
+        }
+
+        .choufli-hal img {
+            width: 55%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        .choufli-hal button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: linear-gradient(145deg, #8e44ad, #4e0e76);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .choufli-hal button:hover {
+            background: linear-gradient(145deg, #4e0e76, #8e44ad);
+        }
+
+        /* Season Buttons */
+        #seasons {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #seasons button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: linear-gradient(145deg, #8e44ad, #4e0e76);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #seasons button:hover {
+            background: linear-gradient(145deg, #4e0e76, #8e44ad);
+        }
+
+        /* Episode Grid for Choufli Hal */
+        #season-1-episodes,
+        #season-2-episodes,
+        #season-3-episodes,
+        #season-4-episodes,
+        #season-5-episodes {
+            display: none;
+            margin-top: 20px;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .episode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Squid Game Button */
+        .squid-game-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: linear-gradient(145deg, #8e44ad, #4e0e76);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .squid-game-button:hover {
+            background: linear-gradient(145deg, #4e0e76, #8e44ad);
+        }
     </style>
 </head>
 <body>
@@ -96,14 +185,17 @@
             <p style="color: white;">The Best Movies Platform</p>
         </header>
 
+        <!-- Squid Game Section -->
         <div class="movies">
             <div class="movie">
-                <img src="https://pbs.twimg.com/media/Gftc9HuWoAAax-2?format=jpg&name=large" alt="Movie Poster" class="movie-poster"  id="img1">
+                <img src="https://pbs.twimg.com/media/Gftc9HuWoAAax-2?format=jpg&name=large" alt="Squid Game Poster" class="movie-poster" id="img1">
             </div>
         </div>
 
-        <button onclick="viewEpisodes()">View Episodes</button>
+        <!-- Squid Game Button -->
+        <button class="squid-game-button" onclick="viewEpisodes()">View Episodes</button>
 
+        <!-- Squid Game Episodes -->
         <div id="episodes-list" style="display: none;">
             <button class="episode-button" onclick="playEpisode('1DLms_rhsOGDZvMb8qOz9zcqRQqYDuRTY')">Episode 1</button>
             <button class="episode-button" onclick="playEpisode('1xqG0V5Q5t--7x_fatT64KaH-9n0hWZOZ')">Episode 2</button>
@@ -114,43 +206,309 @@
             <button class="episode-button" onclick="playEpisode('13Tq5buY2dkYG3xjmLKGDzd-EqIWiQutb')">Episode 7</button>
         </div>
 
+        <!-- Choufli Hal Section -->
+        <div class="choufli-hal">
+    <img src="https://scontent.ftun14-1.fna.fbcdn.net/v/t1.6435-9/127229202_125316169385789_918256695606189797_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=SKQdPdm-ygEQ7kNvgE3HieU&_nc_zt=23&_nc_ht=scontent.ftun14-1.fna&_nc_gid=AWJYgBLtOHcSv8aajw30rta&oh=00_AYBg1J-t6-89OtAXDl8eOzQacf-qHTHKPoEnLezIPz-WAg&oe=67C7713A" alt="Choufli Hal Poster" class="movie-poster" id="img2">
+    <button onclick="toggleChoufliHal()">Watch Choufli Hal</button>
+    <!-- Add the new button here -->
+    <button id="random-episode-button" onclick="playRandomEpisode()">RANDOM EPISODE</button>
+
+    <!-- Season Buttons -->
+    <div id="seasons" style="display: none;">
+        <button onclick="showEpisodes(1)">Season 1</button>
+        <button onclick="showEpisodes(2)">Season 2</button>
+        <button onclick="showEpisodes(3)">Season 3</button>
+        <button onclick="showEpisodes(4)">Season 4</button>
+        <button onclick="showEpisodes(5)">Season 5</button>
+    </div>
+
+    <!-- Episode Grids for Each Season -->
+    <div id="season-1-episodes">
+        <div class="episode-grid" id="episode-grid-1"></div>
+    </div>
+    <div id="season-2-episodes">
+        <div class="episode-grid" id="episode-grid-2"></div>
+    </div>
+    <div id="season-3-episodes">
+        <div class="episode-grid" id="episode-grid-3"></div>
+    </div>
+    <div id="season-4-episodes">
+        <div class="episode-grid" id="episode-grid-4"></div>
+    </div>
+    <div id="season-5-episodes">
+        <div class="episode-grid" id="episode-grid-5"></div>
+    </div>
+</div>
+
+        <!-- Video Container -->
         <div id="video-container">
             <iframe id="video-frame" src="" allowfullscreen></iframe>
         </div>
     </div>
 
     <script>
-    function viewEpisodes() {
-        var episodesList = document.getElementById("episodes-list");
-        episodesList.style.display = episodesList.style.display === "none" ? "flex" : "none";
-    }
+        // Google Drive links for Choufli Hal Seasons 1 to 5
+        const choufliHalEpisodes = {
+            1: {
+                // Season 1 episodes (already defined)
+                1: "1Z9WwBamWsdvXdo7lXQbsnXrsfaF4sD9D",
+                2: "1AXXbdNRDm6FIouJly8ODcMN_YWIvV0qe",
+                3: "1tIGtipOd6zcg2Snx2LgQf4NHCCV7bDNz",
+                4: "19E1hE9CuKbx9AimpmEvXO1yswqdiHxDK",
+                5: "1mdPpzLBsC30Wu4ffYwKan653pFlWwLhM",
+                6: "1BAntoSe7N08phM01gKPkxNX9NfoX4ivK",
+                7: "173TttXTxTLRgTaapikcevs1uAQQEWbTm",
+                8: "1pWpKFKjgY7vAFWqtUWWKEY1jLhzQblX5",
+                9: "1GzLGtzDBUUgqwFEG3PLVZInWBm66ZoGF",
+                10: "1dLzQDCN7UUDWWNaVsym27OEKrOaqOjCU",
+                11: "1meF2Pu31SF0nPW_UpqUhqA2DcPF-Xt0F",
+                12: "1osFHXISXnfedbf9xGdu-DB97jXGXhsMx",
+                13: "130vhPtFNeQoChWQClRvFgzO6U1pOx2Ej",
+                14: "15ys2VWUiVBnK1g_nQC-LSbGLsKb85W0v",
+                15: "1AvhX5PTjlceRtiu2L0O5T-aGTTOfZYXZ",
+                16: "185NKbxV0yt5e_xMbdbxZka5bmWwc0Lmq",
+                17: "1U8jAjFZb7DxhoLp59mt_CV2pBwTXroXO",
+                18: "1iR5dWaD7dOTK2h3df3ad65X-yOZgCDGa",
+                19: "1r1aP-suyUICQOPmNhDGyelwMn4w4X4PY",
+                20: "1DBZSRlRvlfkYsV8wWyj_9jRIme-cGBxm",
+                21: "1FCNMXiAOySHxxU04JRIz_0_9w-4G97Y2",
+                22: "1BBb73FQf2hdNTEwzM-1ytw-wlPIMOYse",
+                23: "10PKiCE0HH9ocRPyluDh7IbTnHI_cdAOM",
+                24: "1tMKrTSb0Z9Cw70qZjolq2AgK7HeoS_U2",
+                25: "18vmFwV8eyH0BJzrlOnhxgdpmvxQGQ_mS",
+                26: "1kXsfjF6HsM5LQke2BURiMnzBrUZSkAcE",
+                27: "1tPmd9UOkVr4tst_xxRPmiQGrv0CRGnpa",
+                28: "1t7ery4dKGsZdGMWaVbC1Ov-wzbroQHKa",
+                29: "1fSZUpNggWhMmLb-1YQQE2xcWFU9CLdRP",
+                30: "12Teax5OWogcEeJ96rUC_H8VlfJ3lUFVq",
+                31: "1-G_f1AT11WoH32B-bqw1iU7ht8gDZRbv"
 
-    function playEpisode(videoId) {
-        var embedLink = "https://drive.google.com/file/d/" + videoId + "/preview";
-        
-        // Open the video in a new tab
-        window.open(embedLink, '_blank');
-    }
+            },
+            2: {
+                // Season 2 episodes (already defined)
+                1: "1Nm0fjMJmmhkKXvIQosTn9LpI0zXbxCmk",
+                2: "1n2wSx_uL3aWTfkQqvsK41XCpMU1BOtpV",
+                3: "1yp4bh-P09BxH1XebisM4WqeYHTub2u8C",
+                4: "1UqDTa3UN9J-GXEVsevvdw_S1p_wv3bhz",
+                5: "1_4a8WOwfLWylKLmAs75Kmx8x3LhPhAmw",
+                6: "1x1qA82NLWfXIYA_KfC8-WU47k1S738Ka",
+                7: "1wKdbcxgb9ELbwutUL-Jjhzs7MV5w7seT",
+                8: "1jl3E45LRIcId7GKUtyAm2YI3_eUSncqc",
+                9: "1F7ihPydMcx1xCB6LA1-i21jCNdHihu0f",
+                10: "1EFNiesqrvMCVFDUSt1kcds5jhoz_9aet",
+                11: "1WNlTxmKQKdDezCpJvchiQnIS5dxWPf6W",
+                12: "1cOyz-B-RyhsHnsXGbnTG84P3nxufICoy",
+                13: "1Nmihitc6yCAjnbgqo7UdBpIEQle7vmmS",
+                14: "10q7-q3IxpbmUYkQZzPlsUQlIymUQoU-8",
+                15: "1vTI00Y07aOOkslWHZd0oxdq_ifou3cGU",
+                16: "1fCRKKUDnFUfNyzyvAmflfYoM3hvW7mi8",
+                17: "1t84MbJM5pDtDFMas_gEn1MLqe3IErCfd",
+                18: "1JyJcJRTOpuArf_SlntG5kjyQZJpoGF-P",
+                19: "1CVDWghS0dvJcqiWK_DdlAvQNwlEl7XpJ",
+                20: "1JkHgXmQO8FIbghyq5hLKQWMiLEDS1B9M",
+                21: "1rzfUxJaEzpLz0mhBw1gnQudyojJEIeug",
+                22: "1x3rjzsu1uPi4nOlA6OllJQaUx1v0R9jU",
+                23: "1tk7NaJhuGJPuuYRnXaOmVGfljvovi2FB",
+                24: "12V8i8KRLaOVvzQQQZlKLIZThk5n9iiwe",
+                25: "1iJmZkaru_J_nm8IxDe8Rz8BwAD2lisrl",
+                26: "1QSh8DWe6j9b_9LLhP8k46eCDpHyDEm5Z",
+                27: "1GZgl9rmrUz7HOY8ZMLmtzcoYPZSM0SIc",
+                28: "15Z5B3KewEDoPdOXpfu-oA9yomYoCUN7m",
+                29: "1N6hkLwcMRH4yWLB_v8RkiuHS7EZb2VXn",
+                30: "1-Tl0sLmYVpTeV4fXwniEjxENOO9TA2G1"
+            },
+            3: {
+                // Season 3 episodes (add your Google Drive IDs here)
+                1: "1zqlx5rcjjFO7Fx42j0-xT5P1KoEbDozy",
+2: "1yDZ3QEr28MHZjGF8QQaxAPh0UirMyhMe",
+3: "1gTnAf5K4ZDx2LwE_TDLiJNP4DPNr5AED",
+4: "1cbea7F8bZMbLOlYNH6Y7aRg-TyoyoDHw",
+5: "1U8f-uHRAv1BTRNp1etWF3imhpO9iNDng",
+6: "1ADWttjg4kAOVfMAEA2MkSTKI0S3jFKoF",
+7: "1hO_9N2oK5OeUThj8iez7vWgZMsdW02UZ",
+8: "1EXKY2NY9mNiVZ1g5Gp_sh20P-OkXuVo1",
+9: "16L55qhRds-EICZrS3dD9YDMCMDxa69Xd",
+10: "1K6Jd8C4utvdZF5hYoFO7HPpVjO7M9GaZ",
+11: "1F-x1OMSTdcEWwPBLYUqhFcZRJQqjJ6ZH",
+12: "1M-jUBXqTbKVx1INt1ZKRuB4uvwhZ24zc",
+13: "1pV59CXhQeBGh6WbzsjatrkayKv-sccbk",
+14: "1ICuSrpwTMgcWE-uE9z3f_vHSkRN5X2d8",
+15: "1MCR8IllJ8JSqODNutX7_b1Bz1iGwFntU",
+16: "1Fzf_Fa5kTFMGFxEcEZT-bBCCfs99ggO8",
+17: "1hb_9kkFCar6RUgAnW2N-H9c0vw-mtQkt",
+18: "1LfyVSEVOc9EANVs1ZgaJWDbP3p9WaU8x",
+19: "19x_WO57r21Yyr7pMGbCxUa3OTIV1aFZN",
+20: "1MufMC95qi0LM0u4Fb5LnLhbSonl48NP7",
+21: "1JU_gT0TksvjQL-qHA4-qRjKFCWLE8TbD",
+22: "1f-VBktL_gBMWfnu1U4JGk85j6QlMeuNO",
+23: "14d5vE5eyaQO7FzAriEpdhklPySrsK6Ek",
+24: "1MvQSD3jdPFXdnpakOJl3VQDBmtFvtLbt",
+25: "1zhL5ijsMC4AS2pBjj6LrVG74LaxUpH-y",
+26: "1i_wTkIKHyFTnBLd7sqDid0Pvhkqlf7H1",
+27: "1nOSgEndpIqcekZRg80H6dsqHn5UmFQU7",
+28: "1-VsPxf4LXiMkztXJ_fQa7xFOVMdf2AOW",
+29: "1PX3aDR7DQd_X0uIA3H8tjAiRJTfK_vb4",
+30: "1DzPWDXCU327IScc0VGuWwFvrB1RaiuIj"
 
-    // ⭐ Generate Falling Stars Effect
-    function createStars() {
-        const numStars = 100; // Number of stars
-        for (let i = 0; i < numStars; i++) {
-            let star = document.createElement("div");
-            star.classList.add("star");
-            document.body.appendChild(star);
+            },
+            4: {
+                // Season 4 episodes (add your Google Drive IDs here)
+                1: "131HW5cBXKDCwfF83LPulgnnqjKXAGAim",
+2: "1TdNy7kqR6q4N-8iUe4l-j1M2IZhJySNO",
+3: "1zdfIcq8Z0awqceGsFZ22vGGQckon_RT6",
+4: "1gFpgv6lxa6zrrL6XzacKlJIwGP0dYTeV",
+5: "1yWnH_phNrHpDz2uvJHQ8UJfyhBFV4XlM",
+6: "1vcMKalkfDwa9S4H8dfebsIPHiVfcNHft",
+7: "1O6CPjw3LPJ_MvDkQaIde1qV2PsZ5dSRe",
+8: "1vuPbceeGCWWrW4gCLGAvvIHQHJfZnNpL",
+9: "1S6l-wSDydMbXf51VmL8yWa5Ec_qVk9BZ",
+10: "12zeqKC9EWbXdyfjDatB-vJ3-wLcCILud",
+11: "1MNG1Y7WZGfmF4g1OEMLAUaOLju7wXv_E",
+12: "1ynsQ6LRRC0BAkNWgg_IRD-ODLotwWrOv",
+13: "1cFhHaOFNd18ONu-YCjNIwJuRWOaivg5i",
+14: "1xGoplnPKxy-RXF3vyNpXTRr243BVkySL",
+15: "1akA9-9ZeoEz5wjQR07tJ3FyZl1ZIeO3N",
+16: "1trRDHpZPHVWfY9PQVnFVXWHgnQH1DiX0",
+17: "1bpb0F6HzGvSiOs1GaYvDjJa__PGN0ban",
+18: "1BqyRO9ZkYTHLhMhsMWn_cZnTtTWY4kMW",
+19: "1HorEbwe005gdDrtrKJA6jUUpzr1liEk2",
+20: "1HYONhNrHNgcCcTytr6HQWSR0uZ77LFaO",
+21: "17ZNUkLBz0OCZZFRpq72czQjpKN5KVPNN",
+22: "1k5aGcnOqvpSUgfskYpsFQ0wA08uhwSEP",
+23: "1tzM_Ut8QDBzXMjlNRQlQNOOWylNfdu0a",
+24: "1tyrECB2cSxeJ_ysIrUvFzU5rWKZcXKk9",
+25: "1vSXEZ3SdA90rLmlIZwGwA55elYU5ebtf",
+26: "1zRvQ8QaWLyoB0wrKYo0XzYu-zYVsS3eD",
+27: "1I9lDO5fLUNb62Zs-5NdfmkDpjRy9mhWs",
+28: "1KulWpS4L3IhIQ6wpDtJ5g1ylIYc7IoiV",
+29: "1lrkos_c-3uqGJLNRZelle9U9cVhBUCTx",
+30: "1b3N9nLIs2AUuDG7_N91IU7Svj-JJY2HP"
 
-            let size = Math.random() * 3;
-            star.style.width = size + "px";
-            star.style.height = size + "px";
-            star.style.left = Math.random() * window.innerWidth + "px";
-            star.style.top = Math.random() * -window.innerHeight + "px";
-            star.style.animationDuration = (Math.random() * 5 + 3) + "s";
+            },
+            5: {
+                // Season 5 episodes (add your Google Drive IDs here)
+                1: "1xubyc-cBK_MpROGSY_dlnkKLXhBQRPVU",
+2: "1hfvbR0OBysNe4uzBjGv7JSszQmGNtmXd",
+3: "1OLguNzqqvtCNjsmnbmN9YDeXulqWTYH3",
+4: "1hXmhPDg1cdw2yB666EPmwZpnQSwRjZSA",
+5: "1j1okHnO70oKbgBX2onobRX5mGwZLghgB",
+6: "1CmOddLm7VzO1wajQeFNG9y4p81aHQdZO",
+7: "1J6SWGaCFw1bXQj226xxAi8sZUolHXWKD",
+8: "1OzQrFxYRAzvK4hA0VkeMY7fRBxJkXRJc",
+9: "13wkvMkyRoiguNwQighuNa8m-O9MSXl9N",
+10: "1lbsSIslkeDBxBlocFwpCQpkK_Cz4oOV9",
+11: "1FvtOdLI4oxjCUh7DyuuFhbT4P3GKbWGH",
+12: "1TZApbrJNKlX3cXDFB0QMm9xSqorMjSox",
+13: "1S7AUrjiuZa7ncc_yjavQS4GxrOMnBlw_",
+14: "1SlwVAylWDYRoKQoasndWd75VINJl4Dft",
+15: "1knXZv0qMBPUUiQI7w8WUXOf2vxPI680u"
+            }
+        };
+
+        // Function to show/hide episodes for a specific season
+        function showEpisodes(seasonNumber) {
+            // Hide all season episode containers first
+            const allSeasonContainers = document.querySelectorAll('[id^="season-"]');
+            allSeasonContainers.forEach(container => {
+                if (container.id !== `season-${seasonNumber}-episodes`) {
+                    container.style.display = "none";
+                }
+            });
+
+            // Toggle the selected season's episodes
+            const episodesContainer = document.getElementById(`season-${seasonNumber}-episodes`);
+            const episodeGrid = document.getElementById(`episode-grid-${seasonNumber}`);
+
+            if (episodesContainer.style.display === "block") {
+                // If episodes are already visible, hide them
+                episodesContainer.style.display = "none";
+            } else {
+                // If episodes are hidden, generate and show them
+                episodeGrid.innerHTML = ""; // Clear previous content
+
+                // Determine the number of episodes based on the season
+                let episodes;
+                if (seasonNumber === 1 || seasonNumber === 2) {
+                    episodes = Object.keys(choufliHalEpisodes[seasonNumber]).length; // Use hardcoded episodes for Season 1 and 2
+                } else if (seasonNumber === 3 || seasonNumber === 4) {
+                    episodes = 30; // 30 episodes for Season 3 and 4
+                } else if (seasonNumber === 5) {
+                    episodes = 15; // 15 episodes for Season 5
+                }
+
+                // Generate episode buttons
+                for (let i = 1; i <= episodes; i++) {
+                    const episodeButton = document.createElement("button");
+                    episodeButton.innerText = `الحلقة ${i}`;
+                    episodeButton.classList.add("episode-button");
+
+                    // Use hardcoded links for Season 1 and 2, dummy links for others
+                    if (seasonNumber === 1 || seasonNumber === 2) {
+                        episodeButton.onclick = () => playEpisode(choufliHalEpisodes[seasonNumber][i]);
+                    } else {
+                        episodeButton.onclick = () => playEpisode(choufliHalEpisodes[seasonNumber][i]);
+                    }
+
+                    episodeGrid.appendChild(episodeButton);
+                }
+                episodesContainer.style.display = "block";
+            }
         }
-    }
 
-    createStars();
-</script>
+        // Function to play an episode
+function playEpisode(videoId) {
+    const embedLink = `https://drive.google.com/file/d/${videoId}/preview`;
+    const videoFrame = document.getElementById("video-frame");
+    const videoContainer = document.getElementById("video-container");
 
+    // Set the iframe source to the embed link
+    videoFrame.src = embedLink;
+
+    // Show the video container
+    videoContainer.style.display = "block";
+}
+
+        // Toggle visibility of seasons and episodes
+        function toggleChoufliHal() {
+            const seasonsDiv = document.getElementById("seasons");
+            const allSeasonContainers = document.querySelectorAll('[id^="season-"]');
+
+            if (seasonsDiv.style.display === "none" || seasonsDiv.style.display === "") {
+                // Show the seasons list
+                seasonsDiv.style.display = "block";
+            } else {
+                // Hide the seasons list and all episode containers
+                seasonsDiv.style.display = "none";
+                allSeasonContainers.forEach(container => {
+                    container.style.display = "none";
+                });
+            }
+        }
+
+        // Squid Game functionality
+        function viewEpisodes() {
+            const episodesList = document.getElementById("episodes-list");
+            episodesList.style.display = episodesList.style.display === "none" ? "flex" : "none";
+        }
+
+        // ⭐ Generate Falling Stars Effect
+        function createStars() {
+            const numStars = 100; // Number of stars
+            for (let i = 0; i < numStars; i++) {
+                let star = document.createElement("div");
+                star.classList.add("star");
+                document.body.appendChild(star);
+
+                let size = Math.random() * 3;
+                star.style.width = size + "px";
+                star.style.height = size + "px";
+                star.style.left = Math.random() * window.innerWidth + "px";
+                star.style.top = Math.random() * -window.innerHeight + "px";
+                star.style.animationDuration = (Math.random() * 5 + 3) + "s";
+            }
+        }
+
+        createStars();
+    </script>
 </body>
-</html> 
+</html>
