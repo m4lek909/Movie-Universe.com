@@ -9,6 +9,14 @@ body {
     position: relative;
 }
 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+    position: relative;
+    padding-bottom: 50px; /* Adjust the space to your preference */
+}
+
 /* Stars Effect (Full Background Stars) */
 .stars {
     position: fixed;
@@ -32,24 +40,35 @@ body {
 
 /* Container for Main Content */
 .container {
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh; /* This ensures the container is at least as tall as the viewport */
+    overflow-y: auto;
     position: relative;
     z-index: 1;
-    padding: 20px;
-    text-align: center;
+    margin-bottom: 60px; /* Adds the space at the bottom */
 }
 
 /* Header Styling */
-header h1 {
-    font-size: 3em;
-    color: #6a1b9a; /* Dark purple color */
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent; /* Set background to transparent */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    z-index: 10; /* Ensure it stays on top of other content */
+    width: 100%;
 }
 
-header p {
-    font-size: 1.2em;
-    margin-top: 10px;
-    color: #d9a8f5; /* Light purple color */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.6);
+/* Header Image */
+.header-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Movie Poster Styling */
@@ -64,14 +83,18 @@ header p {
     border-radius: 10px;
 }
 
+/* Squid Game Button Styling */
+.squid-game-button-container {
+    margin-top: 20px; /* Adjust space between the poster and the button */
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+}
 
-/* View Episodes Button Styling */
-button {
+.squid-game-button-container button {
     background: linear-gradient(135deg, #6a1b9a, #8e24aa); /* Galaxy-like button gradient */
     color: white;
     font-size: 1.2em;
     padding: 15px 30px;
-    margin-top: 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -79,17 +102,18 @@ button {
     box-shadow: 0 4px 20px rgba(138, 43, 226, 0.6);
 }
 
-/* Hover Effect for View Episodes Button */
-button:hover {
+/* Hover Effect for Squid Game Button */
+.squid-game-button-container button:hover {
     background: linear-gradient(135deg, #8e24aa, #6a1b9a);
     transform: scale(1.1);
 }
-#img1{
+
+#img1 {
     width: 45%;
     max-width: 600px;
     height: auto;
-
 }
+
 /* Episode Buttons Styling */
 .episode-button {
     background: linear-gradient(135deg, #8e24aa, #6a1b9a); /* Gradient effect for episode buttons */
@@ -102,7 +126,7 @@ button:hover {
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 15px rgba(138, 43, 226, 0.6);
-    width: 200px;
+    width: 120px;
     text-align: center;
 }
 
@@ -126,9 +150,9 @@ button:hover {
 /* Centering the main buttons and adding spacing */
 .button-container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .button-container button {
@@ -147,32 +171,6 @@ button:hover {
     margin: 10px; /* Spacing between episode buttons */
 }
 
-/* Centering the main buttons and adding spacing */
-.button-container {
-    display: flex;
-    justify-content: space-between;  /* Space buttons evenly */
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-/* Add margin between buttons instead of gap */
-.button-container button {
-    margin: 10px;  /* Spacing between buttons */
-}
-
-/* Aligning episode buttons properly */
-#episodes-list {
-    display: flex;
-    justify-content: space-between;  /* Space episode buttons evenly */
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-/* Add margin between episode buttons instead of gap */
-#episodes-list .episode-button {
-    margin: 10px;  /* Spacing between episode buttons */
-}
-
 /* Optional: Adjust button width for consistency */
 .button-container button,
 #episodes-list .episode-button {
@@ -180,3 +178,186 @@ button:hover {
     text-align: center;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light background for the entire page */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Stack the header and content vertically */
+}
+
+header {
+    width: 100%;
+    background-color: transparent; /* Set background to transparent */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10; /* Ensure it stays on top of other content */
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 120px;
+    align-items: center;
+    align-content: flex-end;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.poster {
+    width: 40%;
+}
+
+.poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.watch-button {
+    width: 20%;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    width: 45%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.seasons {
+    display: none;
+}
+
+.season-btn {
+    display: inline-block;
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.season-btn:hover {
+    background-color: #218838;
+}
+
+/* Season Button Styling */
+/* Overriding the button background with purple */
+button, .season-btn {
+    background-color: #6a1b9a !important; /* Dark purple background */
+    color: white !important; /* White text */
+}
+
+/* On hover, make it a lighter purple */
+button:hover, .season-btn:hover {
+    background-color: #8e24aa !important; /* Lighter purple on hover */
+}
+
+/* Hide scrollbar for a specific container */
+.container {
+    overflow: -moz-scrollbars-none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    scrollbar-width: none; /* For Firefox */
+}
+
+.container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+/* Epic Button Light Effect */
+button {
+    position: relative;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+    color: white;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 1);
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255,255,255,0.6) 10%, rgba(255,255,255,0) 60%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+button:active::before {
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.1s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+/* Header Image Styling */
+.header-image {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    width: 300px !important; /* Adjust the width as needed */
+}
+/* Style for the RANDOM EPISODE button */
+#random-episode-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: linear-gradient(145deg, #ff0000, #cc0000); /* Red gradient */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: none; /* Hidden by default */
+}
+
+#random-episode-button:hover {
+    background: linear-gradient(145deg, #cc0000, #ff0000); /* Darker red gradient on hover */
+}
